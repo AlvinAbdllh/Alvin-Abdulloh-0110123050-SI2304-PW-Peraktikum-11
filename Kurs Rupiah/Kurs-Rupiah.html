@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konversi Mata Uang</title>
+  <style>
+    body {
+    
+      margin: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select, button {
+      margin-bottom: 10px;
+    }
+    .contener{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-items: center;
+    
+    }
+
+    .box{
+      
+      border: 1px solid black; 
+      width: 40%;
+      height: 70px; 
+      
+      background-color: white;
+      text-align: center;
+
+    }
+    input, select {
+        width: 98%;
+    }
+    label {
+        border-bottom: 1px solid;
+        width: 100%;
+        height: 30px;
+        margin-top: 5px;
+    }
+    fieldset{
+        
+        background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Konversi Mata Uang</legend>
+        
+        <form id="currencyConverter">
+    <div class="contener">
+    <div class="box">
+  <label for="amount"><b>Masukkan Nilai Mata Uang Asing:</b></label>
+  <input type="number" id="amount" placeholder="Masukkan nilai mata uang" required oninput="convertCurrency()">
+</div>
+<div class="box">
+  <label for="currency"><b>Pilih Mata Uang:</b></label>
+  <select id="currency" onchange="convertCurrency()">
+    <option value="usd">Dollar US (USD)</option>
+    <option value="sgd">Dollar Singapore (SGD)</option>
+    <option value="myr">Ringgit Malaysia (MYR)</option>
+    <option value="jpy">Yen Jepang (JPY)</option>
+    <option value="eur">Euro (EUR)</option>
+    <option value="sar">Riyal Arab Saudi (SAR)</option>
+  </select>
+</div>
+ 
+<div class="box">
+    <label for="result"><b>Hasil Konversi (Rupiah):</b></label>
+    <input type="text" id="result" readonly>
+</div>
+</div>
+</form>
+</fieldset>
+<script>
+  function convertCurrency() {
+    const amount = parseFloat(document.getElementById("amount").value);
+    const currency = document.getElementById("currency").value;
+    let exchangeRate;
+
+    switch (currency) {
+      case "usd":
+        exchangeRate = 9915;
+        break;
+      case "sgd":
+        exchangeRate = 13472;
+        break;
+      case "myr":
+        exchangeRate = 874;
+        break;
+      case "jpy":
+        exchangeRate = 120;
+        break;
+      case "eur":
+        exchangeRate = 15888;
+        break;
+      case "sar":
+        exchangeRate = 3592;
+        break;
+      default:
+        break;
+    }
+
+    const result = amount * exchangeRate;
+    document.getElementById("result").value = result.toLocaleString("id-ID");
+  }
+</script>
+
+</body>
+</html>

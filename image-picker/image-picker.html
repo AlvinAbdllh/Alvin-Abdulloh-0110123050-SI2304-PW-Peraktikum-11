@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function imagepcr(){
+            const daftar_gambar = ["1.png","2.png","3.png","4.png","5.png"];
+            let pilihan = document.getElementById("option").value;
+            
+            if(pilihan == "ayam"){
+                let select = daftar_gambar[0];
+                document.getElementById("gambar").src = `image/${select}`;
+            }
+            if(pilihan == "kucing"){
+                let select = daftar_gambar[1];
+                document.getElementById("gambar").src = `image/${select}`;
+            }
+            if(pilihan == "tirex"){
+                let select = daftar_gambar[2];
+                document.getElementById("gambar").src = `image/${select}`;
+            }
+            if(pilihan == "burung"){
+                let select = daftar_gambar[3];
+                document.getElementById("gambar").src = `image/${select}`;
+            }
+            if(pilihan == "panda"){
+                let select = daftar_gambar[4];
+                document.getElementById("gambar").src = `image/${select}`;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Image Picker</h1>
+
+    <select name="" id="option" onchange="imagepcr()">
+        <option value="">Pilih Gambar</option>
+        <option value="ayam">Ayam</option>
+        <option value="kucing">Kucing</option>
+        <option value="tirex">Tirex</option>
+        <option value="burung">Burung</option>
+        <option value="panda">Panda</option>
+    </select>
+
+    <div class="container">
+        <img id="gambar" width="500px">
+    </div>
+</body>
+</html>

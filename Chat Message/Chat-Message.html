@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function chat(){
+            let ChatBox = document.getElementById("box");
+            let Pesan = document.getElementById("pesan");
+            let paragraf = document.createElement("p");
+            ChatBox.appendChild(paragraf);
+            paragraf.innerHTML = Pesan.value;
+            Pesan.value = '';
+            ChatBox.scrollTop = ChatBox.scrollHeight;
+        }
+    </script>
+    <style>
+        .container{
+            width: 100%;
+        }
+        #box{
+            width: 50%;
+            border: 1px solid black;
+            height: 400px;
+            padding: 8px 5px;
+            overflow: auto;
+            border-radius: 10px;
+        }
+        #pesan{
+            width: 47.5%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box"></div>
+        <input type="text" id="pesan">
+        <input type="button" id="kirim" onclick="chat()" value="Kirim">
+    </div>
+</body>
+</html>
