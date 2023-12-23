@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        window.onload = function() {
+            document.getElementById('myForm').addEventListener('submit', function(valid) {
+                valid.preventDefault();
+                let nama = document.getElementById('nama');
+                let email = document.getElementById('email');
+                let jam = document.getElementById('jam');
+                let tujuan = document.getElementById('tujuan');
+                let tiket = document.getElementById('tiket');
+                let errorNama = document.getElementById('errorNama');
+                let errorEmail = document.getElementById('errorEmail');
+                let errorJam = document.getElementById('errorJam');
+                let errorTujuan = document.getElementById('errorTujuan');
+                let errorTiket = document.getElementById('errorTiket');
+                let hasil = document.getElementById('hasil');
+            
+                if (nama.value === '' || nama.value.length > 30) {
+                    errorNama.textContent = ' *nama tidak valid';
+                } else {
+                    errorNama.textContent = '';
+                }
+            
+                if (email.value === '' || !email.value.includes('@')) {
+                    errorEmail.textContent = ' *Email tidak valid';
+                } else {
+                    errorEmail.textContent = '';
+                }
+            
+                if (jam.value === '') {
+                    errorJam.textContent = ' *Jam tidak valid';
+                } else {
+                    let jamValue = parseFloat(jam.value.replace(':', '.'));
+                    if (jamValue < 0 || jamValue > 23.59) {
+                        errorJam.textContent = ' *Jam tidak valid';
+                    } else {
+                        errorJam.textContent = '';
+                    }
+                }
+            
+                if (tujuan.value === '') {
+                    errorTujuan.textContent = ' *Tujuan tidak valid';
+                } else {
+                    errorTujuan.textContent = '';
+                }
+            
+                if (tiket.value === '' || tiket.value < 1 || tiket.value > 10) {
+                    errorTiket.textContent = ' *Jumlah tiket tidak valid';
+                } else {
+                    errorTiket.textContent = '';
+                }
+            
+                if (errorNama.textContent === '' && errorEmail.textContent === '' && errorJam.textContent === '' && errorTujuan.textContent === '' && errorTiket.textContent === '') {
+                    hasil.innerHTML = '<p>Nama Pelanggan: ' + nama.value + '</p><p>Email: ' + email.value + '</p><p>Jam Keberangkatan: ' + jam.value + '</p><p>Tujuan Keberangkatan: ' + tujuan.value + '</p><p>Jumlah Tiket: ' + tiket.value + '</p>';
+                }
+            });
+        }
+    </script>
+    <title>Form Validasi</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+  <h2>Form Validasi</h2><br>
+    <form id="myForm">
+        Nama Pelanggan : <input style="margin-left: 38px;" type="text" id="nama" name="nama"><span id="errorNama" class="error"></span>
+        <br><br>
+
+        Email : <input style="margin-left: 108px;" type="email" id="email" name="email"><span id="errorEmail" class="error"></span>
+        <br><br>
+
+        Jam Keberangkatan : <input style="margin-left: 19px; width: 165px;" type="time" id="jam" name="jam"><span id="errorJam" class="error"></span>
+        <br><br>
+
+        Tujuan Keberangkatan : <input  type="text" id="tujuan" name="tujuan"><span id="errorTujuan" class="error"></span>
+        <br><br>
+
+        Jumlah Tiket : <input style="margin-left: 63px; width: 161px;" type="number" id="tiket" name="tiket" min="1" max="10"><span id="errorTiket" class="error"></span>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <div id="hasil"></div>
+
+    
+</body>
+</html>
